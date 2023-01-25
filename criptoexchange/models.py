@@ -1,5 +1,8 @@
 import requests
 
+class ModelError(Exception):
+    pass
+
 class ConsultaCoinAPI:
 
     def __init__(self):
@@ -26,10 +29,10 @@ class Exchange:
         self.time = None
 
     def getExchange(self, apikey):
-        r = requests.get(f'https://rest.coinapi.io/v1/exchangerate/{currency}/EUR?apikey={apikey}')
+        r = requests.get(f'https://rest.coinapi.io/v1/exchangerate/{self.currency}/EUR?apikey={apikey}')
         resultado = r.json()        
         if r.status_code == 200:
             self.rate = resultado["rate"]
-            return self.rate
+            self.time = resultado["time"]
         else:
-            return resultado["error"]
+            raise ModelError(f"Status: {r.status_code}, Error: {resultado['error']}")
