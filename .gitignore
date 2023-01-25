@@ -1,4 +1,4 @@
 entorno_api/
-**__pyache__/
+**__pycache__/
 config.py
 .pytest_cache/
