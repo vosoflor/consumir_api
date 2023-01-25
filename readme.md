@@ -11,8 +11,9 @@ Programa hecho en python para recuperar el valor en euros de una criptomoneda de
     apikey = "4545df4df545d4f545d"
     ```
 ## Instalación de dependencias
-En su entorno de python ejecutar el comando
+En su entorno de python ejecutar el comando a continación con lo que se instalarán las librerías utilizadas (requests y pytest)
 
 ```
 pip install -r requirements.txt
 ```
+
