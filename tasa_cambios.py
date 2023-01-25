@@ -1,6 +1,6 @@
 import requests
+from config import apikey
 
-apikey = "F772D077-2F75-4D0D-8758-345724A1EB74"
 moneda_cripto = input("Ingrese una criptomoneda conocida: ").upper()
 
 # Ejercicio 4: Cómo controlo que si el input está vacío no se realice consulta
