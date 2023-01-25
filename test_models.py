@@ -19,5 +19,6 @@ def test_getexchangeOk():
 
 def test_getexchangeNotOk():
     exchange = Exchange("WRFS")
-    with pytest.raises(ModelError):
+    with pytest.raises(ModelError) as exceptionInfo:
         exchange.getExchange(apikey)
+    assert str(exceptionInfo.value) == "Status: 550, Error: You requested specific single item that we don't have at this moment."

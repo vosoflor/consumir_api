@@ -1,21 +1,21 @@
 from criptoexchange.models import *
 from config import apikey
+from criptoexchange.views import *
 
 allCurrencies = ConsultaCoinAPI()
 allCurrencies.getCurrency(apikey)
 
-print(f"Digital currencies are: {len(allCurrencies.cryptoCurrency)}\n\
-    Non digital currencies are: {len(allCurrencies.otherCurrency)}")
+printCurrencyQuantity(allCurrencies)
 
-cryptoCurrency = input("Ingrese una criptomoneda conocida: ").upper()
+cryptoCurrency = insertCurrency()
 
 while cryptoCurrency != "" and cryptoCurrency.isalpha():
     if cryptoCurrency in allCurrencies.cryptoCurrency:
         currencyExchange = Exchange(cryptoCurrency)
         try:
             currencyExchange.getExchange(apikey)
-            print("{:,.2f} €".format(currencyExchange.rate))
+            printExchangeRate(currencyExchange)
         except ModelError as error:
-            print(error)
+            printError(error)
 
-    cryptoCurrency = input("Ingrese una criptomoneda conocida: ").upper()
+    cryptoCurrency = insertCurrency()
