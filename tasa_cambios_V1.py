@@ -1,5 +1,5 @@
 import requests
-from utils import apikey
+from config import apikey
 
 r = requests.get(f'https://rest.coinapi.io/v1/assets/?apikey={apikey}')
 
@@ -12,6 +12,9 @@ lista_criptomonedas = []
 for item in lista_general:
     if item["type_is_crypto"] == 1:
         lista_criptomonedas.append(item["asset_id"])
+
+print("Moneda digital: ", len(lista_criptomonedas))
+print("Moneda no digital: ", len(lista_general)-len(lista_criptomonedas))
 
 moneda_cripto = input("Ingrese una criptomoneda conocida: ").upper()
 
